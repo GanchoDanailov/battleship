@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -45,7 +46,8 @@ module.exports = {
   },
   plugins: [
     // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
   ],
   devServer: {
     contentBase: "./src"
