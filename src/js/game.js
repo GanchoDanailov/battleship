@@ -1,4 +1,4 @@
-import Board from './components/board'
+import Board from './board'
 
 export const shipsSizes = [5, 4, 4]
 
@@ -9,7 +9,7 @@ export class Game {
   }
 
   makeMove (x, y) {
-    
+
   }
 
 }
