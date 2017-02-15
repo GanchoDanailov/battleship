@@ -23,8 +23,6 @@ const Orientations = {
 
 function allowedShipOrientations (boardSize, shipStart, shipSize) {
   let allowedOrientations = []
-  console.log('shipStart x: ' + shipStart.x)
-  console.log('shipSize ' + shipSize)
   if (shipStart.x + shipSize <= boardSize) {
     allowedOrientations.push(Orientations.RIGHT)
   }
@@ -44,7 +42,6 @@ function allowedShipOrientations (boardSize, shipStart, shipSize) {
   return allowedOrientations
 }
 
-// (5, 3)
 function randomAllowedShipOrientation (boardSize, shipStart, shipSize) {
   let allAllowedOrientations = allowedShipOrientations(boardSize,
                                                        shipStart,
@@ -58,25 +55,46 @@ function randomAllowedShipOrientation (boardSize, shipStart, shipSize) {
 
 function shipCordinates
  (shipStart, shipOrientation, shipSize) {
-  let movementOrientation = shipOrientation === 'UP' || 'RIGHT' ? 'x' : 'y'
-  let movementSpeed = shipOrientation === 'DOWN' || 'LEFT' ? 1 : -1
-
   let shipCordinates = []
   let currentX = shipStart.x
   let currentY = shipStart.y
-  //set start coordinates
+  // set start coordinates
   shipCordinates.push(new Cordinate(currentX, currentY))
 
-  // reduce -1 (already pused the start coordinates)
-  for (let i = 0; i < shipSize - 1; i++) {
-    if (movementOrientation === 'x') {
-      currentX = currentX + movementSpeed
-    } else {
-      currentY = currentY + movementSpeed
+  switch (shipOrientation) {
+    case 'LEFT': {
+      for (let i = 0; i < shipSize - 1; i++) {
+        currentX = currentX - 1
+        shipCordinates.push(new Cordinate(currentX, currentY))
+      }
+      break
     }
-    console.log('current X Y: '+ currentX +' ' + currentY)
-    shipCordinates.push(new Cordinate(currentX, currentY))
+    case 'RIGHT': {
+      for (let i = 0; i < shipSize - 1; i++) {
+        currentX = currentX + 1
+        shipCordinates.push(new Cordinate(currentX, currentY))
+      }
+      break
+    }
+    case 'UP': {
+      for (let i = 0; i < shipSize - 1; i++) {
+        currentY = currentY - 1
+        shipCordinates.push(new Cordinate(currentX, currentY))
+      }
+      break
+    }
+    case 'DOWN': {
+      for (let i = 0; i < shipSize - 1; i++) {
+        currentY = currentY + 1
+        shipCordinates.push(new Cordinate(currentX, currentY))
+      }
+      break
+    }
+    default: {
+      break
+    }
   }
+
   return shipCordinates
 }
 
@@ -86,7 +104,6 @@ export default function generateShip (boardSize, shipSize) {
                                                      shipStart,
                                                      shipSize)
 
-  console.log('shipOrientation: ' + shipOrientation)
   let tmpShip = new Ship(shipCordinates(shipStart, shipOrientation, shipSize))
   return tmpShip
 }

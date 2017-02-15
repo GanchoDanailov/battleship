@@ -8,15 +8,16 @@ export default class BoardGenerator {
     this.board = this.generateEmptyBoard()
   }
   // BoardGenerator.generateBoard(10, [5, 4, 4])
-  generateBoard (size, shipSizes) {
-    console.log('shipSizes: ' + shipSizes)
-    for (let shipSize of shipSizes) {
-      let generatedShip = generateShip(size, shipSize)
+  generateBoard () {
+    this.shipSizes.forEach((shipSize) => {
+      let generatedShip = generateShip(this.size, shipSize)
+
       while (!this.allowedShip(generatedShip)) {
-        generatedShip = generateShip(size, shipSize)
+        generatedShip = generateShip(this.size, shipSize)
       }
+
       this.board.addShip(generatedShip)
-    }
+    })
 
     return this.board
   }
