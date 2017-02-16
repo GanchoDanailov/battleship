@@ -7,4 +7,5 @@ export default class Ship {
   containCordinate (cordinate) {
     return this.cordinates.some(shipCordinate => shipCordinate.compare(cordinate))
   }
+  
 }

@@ -6,4 +6,5 @@ export default class Hit {
   containCordinate (cordinate) {
     return this.cordinates.some(hitCordinate => hitCordinate.compare(cordinate))
   }
+  
 }

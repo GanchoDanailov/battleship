@@ -44,6 +44,7 @@ module.exports = {
       }
     ]
   },
+  
   plugins: [
     // Avoid publishing files when compilation fails
     new webpack.NoErrorsPlugin(),

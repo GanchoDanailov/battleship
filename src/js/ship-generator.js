@@ -12,6 +12,7 @@ function randomShipStart (boardSize) {
   let y = getRandomIntInclusive(1, boardSize)
 
   return new Cordinate(x, y)
+  
 }
 
 const Orientations = {

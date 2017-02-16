@@ -2,7 +2,6 @@ const CordinateStatuses = {
   HIT: 'HIT',
   MISS: 'MISS'
 }
-
 export default class HitMap {
   constructor () {
     this.hitCordinates = []

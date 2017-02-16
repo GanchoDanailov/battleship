@@ -6,6 +6,7 @@ Battleship game
 npm i
 ```
 
+
 ## 02. Run
 
 - `npm start` to start

@@ -3,7 +3,6 @@ export default class Cordinate {
     this.x = x
     this.y = y
   }
-
   compare (other) {
     return this.x === other.x && this.y === other.y
   }

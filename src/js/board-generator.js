@@ -7,6 +7,7 @@ export default class BoardGenerator {
     this.shipSizes = shipSizes
     this.board = this.generateEmptyBoard()
   }
+
   // BoardGenerator.generateBoard(10, [5, 4, 4])
   generateBoard () {
     this.shipSizes.forEach((shipSize) => {

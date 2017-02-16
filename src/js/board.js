@@ -11,4 +11,5 @@ export default class Board {
   hasShipOnCordinate (cordinate) {
     return this.ships.some(ship => ship.containCordinate(cordinate))
   }
+
 }

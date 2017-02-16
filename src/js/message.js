@@ -1,9 +1,11 @@
-export default class Message {
-  constructor(message) {
-    this.message = message;
+export class Message {
+  constructor (message) {
+    this.message = message
   }
 
-  render() {
-    return `Hey ${this.message}. Start using ES6 todfdsfsay!`;
+  render () {
+    return `${this.message}`
   }
 }
+
+export let textContainer = document.querySelector('.main')
