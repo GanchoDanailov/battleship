@@ -23,8 +23,9 @@
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
-  
+
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --colors --watch"
+    "start": "webpack-dev-server --hot --inline --progress --colors --watch",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   }
 }
