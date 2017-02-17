@@ -8,9 +8,7 @@
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "node-sass": "^4.5.0",
-    "open-browser-webpack-plugin": "0.0.3"
-  },
-  "devDependencies": {
+    "open-browser-webpack-plugin": "0.0.3",
     "autoprefixer-loader": "^2.1.0",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
@@ -23,8 +21,12 @@
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
-  
+  "devDependencies": {
+
+  },
+
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --colors --watch"
+    "start": "webpack-dev-server",
+    "heroku-postbuild": "webpack-dev-server --config ./webpack.config.js --progress"
   }
 }

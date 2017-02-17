@@ -14,7 +14,7 @@ function visualStatus (isHit, hitStatus) {
         return 'X'
       case 'MISS':
         textContainer.textContent = new Message('*** Miss ***').render()
-        return 'O'
+        return '-'
       default:
         return
     }
