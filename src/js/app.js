@@ -2,14 +2,21 @@ import Game from './game'
 import BoardGenerator from './board-generator'
 import hitParser from './hit-parser'
 import renderGame from './game-renderer'
+import config from './config'
 
-let board = new BoardGenerator(10, [5, 4, 4]).generateBoard()
+let board = new BoardGenerator(config.boardSize, [
+  config.battleshipLength,
+  config.destroyerLength,
+  config.destroyerLength
+]).generateBoard()
+
 let game = new Game(board)
 
 renderGame(game)
 
 document.getElementById('fire').onclick = function () {
-  var inputCoordinate = hitParser(document.getElementById('coordinate').value)
+  var inputValue = document.getElementById('coordinate').value
+  var inputCoordinate = hitParser(inputValue)
 
   if (inputCoordinate === 'hint') {
     game.askHint(true)
@@ -21,4 +28,6 @@ document.getElementById('fire').onclick = function () {
   } else {
     // Move is disallowed (already hit there)
   }
+  document.getElementById('coordinate').value = ''
+  document.getElementById('coordinate').focus()
 }

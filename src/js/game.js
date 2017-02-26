@@ -7,12 +7,13 @@ export default class Game {
     this.board = board
     this.hitMap = new HitMap()
     this.hint = false
+    this.hitCount = 0
   }
 
   makeMove (cordinate) {
+    this.inceremntHits()
     if (this.allowedHit()) {
       let hitCordinate = this.generateHitCordinate(cordinate)
-
       this.hitMap.addHitCordinate(hitCordinate)
       return hitCordinate
     } else {
@@ -21,7 +22,6 @@ export default class Game {
   }
 
   allowedHit () {
-    // TODO  check conditions
     return true
   }
 
@@ -34,6 +34,14 @@ export default class Game {
     return this.board.hasShipOnCordinate(cordinate) ? 'HIT' : 'MISS'
   }
 
+  inceremntHits () {
+    this.hitCount++
+  }
+
+  getHitCount () {
+    return this.hitCount
+  }
+
   askHint (ask) {
     this.hint = ask
   }
@@ -43,16 +51,6 @@ export default class Game {
   }
 
   isGameOver (board, hitMap) {
-    let hittedCounter = 0
-
-    for (var hitCordinate of hitMap.hitCordinates) {
-      if (hitCordinate.status === 'HIT') {
-        hittedCounter++
-      }
-    }
-    // TODO
-    // return thmHits.filter(function (elem) {
-    //   return boardHshipCordinates.indexOf(elem) > -1
-    // }).length === boardHshipCordinates.length)
+    return false
   }
 }

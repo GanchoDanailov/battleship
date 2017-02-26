@@ -6,14 +6,16 @@
 </head>
 <body>
 
-<h1>Battle ship</h1>
+<h1>Battleships</h1>
 
 <div class="main"></div>
 
   <div id='board'></div>
-
-  Enter coordinates (row, col), e.g. A5: <input type="text" name="lastname" id="coordinate">
-  <input type="submit" id="fire">
+  <form onsubmit="event.preventDefault();">
+    Enter coordinates (row, col), e.g. A5:
+    <input type="text" name="lastname" id="coordinate" autofocus pattern="^[A-J]{2}\d{1}" title="example: A3">
+    <input type="submit" id="fire">
+  </form>
 
 
 <script src="bundle.js"></script>

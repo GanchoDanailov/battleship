@@ -19,7 +19,7 @@ function visualStatus (isHit, hitStatus) {
         return
     }
   } else {
-    return ' . '
+    return '.'
   }
 }
 

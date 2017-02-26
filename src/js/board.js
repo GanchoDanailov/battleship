@@ -1,3 +1,4 @@
+
 export default class Board {
   constructor (size = 10, ships = []) {
     this.size = 10
