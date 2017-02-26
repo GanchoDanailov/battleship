@@ -1,5 +1,5 @@
 export default class HitCordinate {
-  constructor (cordinate, status) {
+  constructor (cordinate, status = 'UNKNOWN') {
     this.cordinate = cordinate
     this.status = status
   }

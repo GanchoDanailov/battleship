@@ -1,45 +1,66 @@
 import HitCordinate from './hit-cordinate'
 import HitMap from './hit-map'
-export const shipsSizes = [5, 4, 4]
+//export const shipsSizes = [5, 4, 4]
 
 export default class Game {
   constructor (board) {
     this.board = board
     this.hitMap = new HitMap()
     this.hint = false
-    this.hitCount = 0
   }
 
   makeMove (cordinate) {
-    this.inceremntHits()
-    if (this.allowedHit()) {
-      let hitCordinate = this.generateHitCordinate(cordinate)
-      this.hitMap.addHitCordinate(hitCordinate)
-      return hitCordinate
-    } else {
+    if (!this.allowedHit(cordinate)) {
       return false
     }
+
+    return this.generateHitCordinate(cordinate)
   }
 
-  allowedHit () {
-    return true
+  getCordinateStatus (cordinate) {
+    return this.hitMap.hitStatusOnCordinate(cordinate)
+  }
+
+  nonSinkedShips () {
+    return this.board.ships.filter(ship => {
+      return !this.shipIsSinked(ship)
+    })
+  }
+
+  shipIsSinked (ship) {
+    return ship.cordinates.every(cordinate => {
+      return this.hitMap.containCordinate(cordinate)
+    })
+  }
+
+  allowedHit (cordinate) {
+    return !this.hitMap.containCordinate(cordinate)
   }
 
   generateHitCordinate (cordinate) {
-    let hitStatus = this.getHitStatus(cordinate)
-    return new HitCordinate(cordinate, hitStatus)
+    const nonSinkedShipsCountBefore = this.nonSinkedShips().length
+
+    let hitCordinate = new HitCordinate(cordinate)
+    this.hitMap.addHitCordinate(hitCordinate)
+
+    let hitStatus = this.getHitStatus(cordinate, nonSinkedShipsCountBefore)
+    hitCordinate.status = hitStatus
+
+    return hitCordinate
   }
 
-  getHitStatus (cordinate) {
+  getHitStatus (cordinate, nonSinkedShipsCountBefore) {
+    const nonSinkedShipsCount = this.nonSinkedShips().length
+
+    if (nonSinkedShipsCountBefore > nonSinkedShipsCount) {
+      return 'SUNK'
+    }
+
     return this.board.hasShipOnCordinate(cordinate) ? 'HIT' : 'MISS'
   }
 
-  inceremntHits () {
-    this.hitCount++
-  }
-
   getHitCount () {
-    return this.hitCount
+    return this.hitMap.hitCordinates.count()
   }
 
   askHint (ask) {

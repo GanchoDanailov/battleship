@@ -1,7 +1,7 @@
 
 export default class Board {
-  constructor (size = 10, ships = []) {
-    this.size = 10
+  constructor (size, ships = []) {
+    this.size = size
     this.ships = ships
   }
 

@@ -3,7 +3,7 @@ import BoardGenerator from './board-generator'
 import hitParser from './hit-parser'
 import renderGame from './game-renderer'
 import config from './config'
-
+console.log(config.boardSize)
 let board = new BoardGenerator(config.boardSize, [
   config.battleshipLength,
   config.destroyerLength,

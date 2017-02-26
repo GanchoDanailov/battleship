@@ -1,5 +1,6 @@
 import Board from './board'
 import generateShip from './ship-generator'
+import config from './config'
 
 export default class BoardGenerator {
   constructor (size, shipSizes) {
@@ -30,6 +31,6 @@ export default class BoardGenerator {
   }
 
   generateEmptyBoard (size) {
-    return new Board(size, [])
+    return new Board(config.boardSize, [])
   }
 }

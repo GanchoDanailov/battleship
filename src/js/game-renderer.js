@@ -6,21 +6,23 @@ import {
 
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
-function visualStatus (isHit, hitStatus) {
-  if (isHit) {
-    switch (hitStatus) {
-      case 'HIT':
-        textContainer.textContent = new Message('*** Hit ***').render()
-        return 'X'
-      case 'MISS':
-        textContainer.textContent = new Message('*** Miss ***').render()
-        return '-'
-      default:
-        return
-    }
-  } else {
-    return '.'
+function visualStatus (hitStatus) {
+  console.log(hitStatus)
+  switch (hitStatus) {
+    case 'HIT':
+      textContainer.textContent = new Message('*** Hit ***').render()
+      return 'X'
+    case 'MISS':
+      textContainer.textContent = new Message('*** Miss ***').render()
+      return '-'
+    case 'SUNK':
+      textContainer.textContent = new Message('*** SUNK ***').render()
+      return 'X'
+    default:
+      return '.'
   }
+
+    textContainer.textContent = new Message('').render()
 }
 
 function makeTableHTML (game) {
@@ -37,15 +39,16 @@ function makeTableHTML (game) {
       } else {
         if (game.isHintNeeded()) {
           let hasShip = game.board.hasShipOnCordinate(new Cordinate(j, i))
-          if (hasShip) {
+          let cordinateStatus = game.getCordinateStatus(new Cordinate(j, i))
+          if (hasShip && visualStatus(cordinateStatus) !== 'X') {
             result += '<td align="center">' + '#' + '</td>'
           } else {
             result += '<td align="center"></td>'
           }
         } else {
-          let isHit = game.hitMap.containCordinate(new Cordinate(j, i))
-          let hitStatus = game.getHitStatus(new Cordinate(j, i))
-          result += '<td align="center">' + visualStatus(isHit, hitStatus) + '</td>'
+          let cordinateStatus = game.getCordinateStatus(new Cordinate(j, i))
+
+          result += '<td align="center">' + visualStatus(cordinateStatus) + '</td>'
         }
       }
     }
