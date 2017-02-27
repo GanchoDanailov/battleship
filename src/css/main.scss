@@ -4,19 +4,22 @@ html, body {
   margin: 0;
   font-family: monospace;
 }
-th:first-child{
-  visibility: hidden;
-}
-table{
+
+table {
     table-layout: fixed;
     width: 250px;
     height: 170px;
     margin-bottom: 50px;
 }
 
+th:first-child {
+  visibility: hidden;
+}
+
 th, td {
     width: 10px;
 }
-.main{
+
+.main {
   height: 20px;
 }

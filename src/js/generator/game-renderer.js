@@ -1,9 +1,9 @@
-import Cordinate from './cordinate'
+import Cordinate from '../cordinate'
 import {
   textContainer,
   Message
-} from './message'
-import {alphabet} from './config/config'
+} from '../utils/message'
+import {alphabet} from '../config/config'
 
 function visualStatus (hitStatus) {
   switch (hitStatus) {

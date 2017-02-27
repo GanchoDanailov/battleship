@@ -1,6 +1,6 @@
-import Board from './board'
+import Board from '../board'
 import generateShip from './ship-generator'
-import config from './config/config'
+import config from '../config/config'
 
 export default class BoardGenerator {
   constructor (size, shipSizes) {

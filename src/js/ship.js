@@ -1,4 +1,3 @@
-
 export default class Ship {
   constructor (cordinates) {
     this.cordinates = cordinates

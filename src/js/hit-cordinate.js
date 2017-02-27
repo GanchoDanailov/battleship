@@ -3,5 +3,4 @@ export default class HitCordinate {
     this.cordinate = cordinate
     this.status = status
   }
-
 }

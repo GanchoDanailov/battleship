@@ -1,5 +1,5 @@
-import Ship from './ship'
-import Cordinate from './cordinate'
+import Ship from '../ship'
+import Cordinate from '../cordinate'
 
 function getRandomIntInclusive (min, max) {
   min = Math.ceil(min)
