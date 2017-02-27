@@ -30,6 +30,5 @@ document.getElementById('fire').onclick = function () {
   }
   if (document.getElementById('fire')) {
     document.getElementById('coordinate').value = ''
-    document.getElementById('coordinate').focus()
   }
 }

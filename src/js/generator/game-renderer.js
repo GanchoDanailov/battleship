@@ -22,7 +22,7 @@ function visualStatus (hitStatus) {
 function makeTableHTML (game) {
   let boardSize = game.board.size
 
-  var result = "<table width= '500'>"
+  var result = '<table>'
   for (var i = 0; i <= boardSize; i++) {
     result += '<tr>'
     for (var j = 0; j <= boardSize; j++) {
