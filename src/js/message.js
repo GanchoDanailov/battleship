@@ -9,3 +9,4 @@ export class Message {
 }
 
 export let textContainer = document.querySelector('.main')
+export let form = document.querySelector('.form')

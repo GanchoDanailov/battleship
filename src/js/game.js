@@ -1,6 +1,10 @@
 import HitCordinate from './hit-cordinate'
 import HitMap from './hit-map'
-//export const shipsSizes = [5, 4, 4]
+import {
+  textContainer,
+  form,
+  Message
+} from './message'
 
 export default class Game {
   constructor (board) {
@@ -13,7 +17,6 @@ export default class Game {
     if (!this.allowedHit(cordinate)) {
       return false
     }
-
     return this.generateHitCordinate(cordinate)
   }
 
@@ -53,14 +56,22 @@ export default class Game {
     const nonSinkedShipsCount = this.nonSinkedShips().length
 
     if (nonSinkedShipsCountBefore > nonSinkedShipsCount) {
+      textContainer.textContent = new Message('*** SUNK ***').render()
       return 'SUNK'
+    }
+    let status = this.board.hasShipOnCordinate(cordinate) ? 'HIT' : 'MISS'
+
+    if (status === 'HIT') {
+      textContainer.textContent = new Message('*** Hit ***').render()
+    } else {
+      textContainer.textContent = new Message('*** MISS ***').render()
     }
 
     return this.board.hasShipOnCordinate(cordinate) ? 'HIT' : 'MISS'
   }
 
   getHitCount () {
-    return this.hitMap.hitCordinates.count()
+    return this.hitMap.hitCordinates.length
   }
 
   askHint (ask) {
@@ -71,7 +82,15 @@ export default class Game {
     return this.hint
   }
 
-  isGameOver (board, hitMap) {
-    return false
+  isGameOver () {
+    if (this.nonSinkedShips().length <= 0) {
+      this.endGame()
+      return true
+    }
+  }
+
+  endGame () {
+    let movesCount = this.getHitCount()
+    form.textContent = new Message('*** Well done! You completed the game in ' + movesCount + ' shots ***').render()
   }
 }

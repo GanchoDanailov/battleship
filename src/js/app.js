@@ -2,8 +2,8 @@ import Game from './game'
 import BoardGenerator from './board-generator'
 import hitParser from './hit-parser'
 import renderGame from './game-renderer'
-import config from './config'
-console.log(config.boardSize)
+import config from './config/config'
+
 let board = new BoardGenerator(config.boardSize, [
   config.battleshipLength,
   config.destroyerLength,
@@ -24,10 +24,12 @@ document.getElementById('fire').onclick = function () {
   } else if (inputCoordinate && game.makeMove(inputCoordinate)) {
     game.askHint(false)
     renderGame(game)
-    game.isGameOver(game.board, game.hitMap)
+    game.isGameOver()
   } else {
     // Move is disallowed (already hit there)
   }
-  document.getElementById('coordinate').value = ''
-  document.getElementById('coordinate').focus()
+  if (document.getElementById('fire')) {
+    document.getElementById('coordinate').value = ''
+    document.getElementById('coordinate').focus()
+  }
 }

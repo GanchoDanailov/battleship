@@ -3,26 +3,20 @@ import {
   textContainer,
   Message
 } from './message'
-
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+import {alphabet} from './config/config'
 
 function visualStatus (hitStatus) {
-  console.log(hitStatus)
   switch (hitStatus) {
     case 'HIT':
-      textContainer.textContent = new Message('*** Hit ***').render()
       return 'X'
     case 'MISS':
-      textContainer.textContent = new Message('*** Miss ***').render()
       return '-'
     case 'SUNK':
-      textContainer.textContent = new Message('*** SUNK ***').render()
       return 'X'
     default:
       return '.'
   }
-
-    textContainer.textContent = new Message('').render()
+  textContainer.textContent = new Message('').render()
 }
 
 function makeTableHTML (game) {
